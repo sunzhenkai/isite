@@ -1,0 +1,38 @@
+/* 导航栏 */
+@import "variables";
+
+.nav-bar {
+  height: 50px;
+  background-color: white;
+  border-bottom: 1px solid $border-color-default;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .user-info-wrp {
+    position: absolute;
+    right: 2rem;
+  }
+
+  &-menu-item {
+    display: flex;
+    padding: 0 1rem;
+    color: $font-color-default;
+    height: 46px;
+    align-items: center;
+    border-top: solid 2px transparent;
+    border-bottom: solid 2px transparent;
+
+    &:hover {
+      color: $theme-color-green;
+    }
+  }
+
+  .menu-item-active {
+    border-bottom: solid 2px $theme-color-green;
+  }
+}

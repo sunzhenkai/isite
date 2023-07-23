@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      nodeSelector:
+        location: home
+      containers:
+        - name: {{ .Values.name }}
+          image: registry.cn-hangzhou.aliyuncs.com/sunzhenkai/isite-service:{{ .Values.imageVersion }}
+          env:
+            - name: ENV_MYSQL_DB
+              value: {{ .Values.mysql.db | quote }}
+            - name: ENV_MYSQL_USER
+              value: {{ .Values.mysql.user | quote }}
+            - name: ENV_MYSQL_PASSWORD
+              value: {{ .Values.mysql.password | quote }}
+            - name: ENV_MYSQL_HOST
+              value: {{ .Values.mysql.host | quote }}
+            - name: ENV_MYSQL_PORT
+              value: {{ .Values.mysql.port | quote }}
+      imagePullSecrets:
+        - name: regcred

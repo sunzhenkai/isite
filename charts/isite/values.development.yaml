@@ -1,0 +1,15 @@
+name: isite-development
+replicas: 1
+imageVersion: 0.0.6-beta.0
+
+service:
+  type: NodePort
+  ports:
+    port: 18080
+    nodePort: 38081
+mysql:
+  user: isite
+  db: isite
+  password: isite
+  host: 192.168.6.6
+  port: 3306

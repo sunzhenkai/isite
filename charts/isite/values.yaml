@@ -1,0 +1,16 @@
+name: isite
+namespace: default
+replicas: 1
+imageVersion: v1.0.0
+
+service:
+  type: NodePort
+  ports:
+    port: 18080
+    nodePort: 30880
+mysql:
+  user: isite
+  db: isite
+  password: isite
+  host: 192.168.6.6
+  port: 3306
